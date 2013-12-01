@@ -88,7 +88,6 @@ bool validate_config(char *config, int &b, int &w, KernelInterface **kernel = NU
                 case 'K': case 'S': *kernel = new SpinlockKernel(); break;
                 case 'F': *kernel = new FermiKernel(); break;
                 case 'L': *kernel = new LegacyKernel(); break;
-                case 'X': *kernel = new TestKernel(); break;
                 case ' ': // choose based on device architecture
                      if (props->major == 3 && props->minor == 5)
                     *kernel = new TitanKernel();
@@ -279,8 +278,6 @@ int find_optimal_blockcount(int thr_id, KernelInterface* &kernel, bool &concurre
         else if ((device_config[thr_id] != NULL && device_config[thr_id][0] == 'L') ||
                  ((device_config[thr_id] == NULL || !strcasecmp(device_config[thr_id], "auto")) && props.major == 1))
             kernel = new LegacyKernel();
-        else if ((device_config[thr_id] != NULL && device_config[thr_id][0] == 'X'))
-            kernel = new TestKernel();
     }
 
     // set whatever shared memory bank mode the kernel prefers

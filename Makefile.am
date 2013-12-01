@@ -25,7 +25,6 @@ cudaminer_SOURCES	= elist.h miner.h compat.h \
 			  spinlock_kernel.cu spinlock_kernel.h \
 			  legacy_kernel.cu legacy_kernel.h \
 			  fermi_kernel.cu fermi_kernel.h \
-			  test_kernel.cu test_kernel.h \
 			  titan_kernel.cu titan_kernel.h
 
 cudaminer_LDFLAGS	= $(PTHREAD_FLAGS) @CUDA_LDFLAGS@
@@ -39,7 +38,4 @@ spinlock_kernel.o: spinlock_kernel.cu
 	$(NVCC) @CFLAGS@ -arch=compute_11 --maxrregcount=64 --ptxas-options=-v $(JANSSON_INCLUDES) -o $@ -c $<
 
 titan_kernel.o: titan_kernel.cu
-	$(NVCC) @CFLAGS@ -arch=compute_35 --maxrregcount=64 --ptxas-options=-v $(JANSSON_INCLUDES) -o $@ -c $<
-
-test_kernel.o: test_kernel.cu
 	$(NVCC) @CFLAGS@ -arch=compute_35 --maxrregcount=64 --ptxas-options=-v $(JANSSON_INCLUDES) -o $@ -c $<

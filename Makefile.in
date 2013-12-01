@@ -57,7 +57,7 @@ am_cudaminer_OBJECTS = cudaminer-cpu-miner.$(OBJEXT) \
 	cudaminer-util.$(OBJEXT) cudaminer-sha2.$(OBJEXT) \
 	cudaminer-scrypt.$(OBJEXT) salsa_kernel.$(OBJEXT) \
 	spinlock_kernel.$(OBJEXT) legacy_kernel.$(OBJEXT) \
-	fermi_kernel.$(OBJEXT) test_kernel.$(OBJEXT) \
+	fermi_kernel.$(OBJEXT) \
 	titan_kernel.$(OBJEXT)
 cudaminer_OBJECTS = $(am_cudaminer_OBJECTS)
 cudaminer_DEPENDENCIES =
@@ -271,7 +271,6 @@ cudaminer_SOURCES = elist.h miner.h compat.h \
 			  spinlock_kernel.cu spinlock_kernel.h \
 			  legacy_kernel.cu legacy_kernel.h \
 			  fermi_kernel.cu fermi_kernel.h \
-			  test_kernel.cu test_kernel.h \
 			  titan_kernel.cu titan_kernel.h
 
 cudaminer_LDFLAGS = $(PTHREAD_FLAGS) @CUDA_LDFLAGS@
